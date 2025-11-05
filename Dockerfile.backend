@@ -84,6 +84,8 @@ RUN chmod +x /opt/chrome/chrome
 RUN pip3 install --upgrade pip setuptools wheel
 
 COPY requirements.txt .
+# Install ROCm-specific PyTorch build
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/rocm6.1 torch==2.4.1
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN mkdir -p /opt/workspace
